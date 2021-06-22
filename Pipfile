@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+requests = "==2.21.0"
+pycryptodome = "==3.7.3"
+twilio = "*"
+matplotlib = "*"
+pillow = "*"
+io = "*"
+cv2 = "*"
+pil = "*"
+face-recognition = "*"
+opencv-python = "*"
+
+[requires]
+python_version = "3.6"

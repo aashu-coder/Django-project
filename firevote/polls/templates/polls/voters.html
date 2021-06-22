@@ -1,0 +1,61 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+{% if request.session.voter_name%}
+
+
+ <header>
+    <nav class="navbar navbar-expand-lg navbar-light " id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/">FIREVOTE</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/login/voterlog/current/">Current polls</a>
+            </li>
+              <!--
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/login/voterlog/profile/">Manage Profile</a>
+            </li>
+            -->
+              <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/login/voterlog/logout/">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+</header>
+
+<div class="container text-center">
+    <h1>Hello {{ request.session.voter_name }} You have Logged In As Voter!</h1>
+    <h2>-: These are the stuffs you can do :-</h2>
+    <h3>(click on each to know more)</h3>
+    <br>
+    <h3 class="toclick"><b>Current Polls</b></h3>
+    <p class="tohide"> Select from current going polls!</p>
+    <h3 class="toclick"><b>Manage Your Profile</b></h3>
+    <p class="tohide"> Make updations if any, to your profile informations</p>
+</div>
+
+<script>
+     $(document).ready(function () {
+     $('.tohide').hide();
+     })
+    $('.toclick').click(function(){
+    $('.tohide').show('slow');
+
+    })
+
+</script>
+{% else %}
+<h1>You need to login as a voter to view this!</h1>
+<a href="/login/">login here</a>
+{% endif %}
+{% endblock %}
+
+

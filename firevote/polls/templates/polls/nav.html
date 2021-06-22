@@ -1,0 +1,303 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FIREVOTE- home</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="{% static 'favicon.png' %}" rel="icon">
+  <link href="{% static 'apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|
+  Poppins:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'bootstrap.min.css'%}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link href="{% static 'font-awesome.min.css'%}" rel="stylesheet">
+  <link href="{% static 'animate.min.css'%}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'style.css'%}" rel="stylesheet">
+  <style>
+
+
+
+  </style>
+
+  <!-- =======================================================
+    Theme Name: Regna
+    Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+
+  <!--==========================
+  Header
+  ============================-->
+  <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <a style="color:white" href="#hero"><h3>FIREVOTE</h3></a>
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <!--<h1><a href="#hero">Regna</a></h1>-->
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="login/">Login</a></li>
+          <li><a href="#about"> About us</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">register as voter</a></li>
+
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Hero Section
+  ============================-->
+  <section id="hero" >
+    <div class="hero-container" style="background-image: url({% static 'voting.jpg' %});background-size:cover;background-position:center center;">
+      <h1>Welcome To FIREVOTE !</h1>
+      <h2>Get rid of Ballot papers and E.V.M.</h2>
+      <a href="#about" class="btn-get-started">Know More</a>
+    </div>
+  </section><!-- #hero -->
+
+  <main id="main">
+
+
+    <section id="about">
+      <div class="container">
+
+
+          <div class=" content text-center wow fadeInUp ">
+            <h3 class="section-title">Few Words About This App</h3>
+            <p>
+              Our country has the most no. of people aged between 18-35. A large no. of voters appears to vote
+              in world's largest democratic elections. But, a very large section of this young and eligible population
+              could not vote. Reason being, lack of a system for distant voting.<br>
+              Our app is an initiative in the direction of making a system for distant voting.
+            </p>
+
+            <div class="icon-box wow fadeInUp">
+              <div class="icon"><i class="fas fa-poll"></i></div>
+              <h4 class="title" style="color:#28c997">Online result declaration</h4>
+              <p class="description"> With the help of the data science library Matplotlib, we can view the results in the form of bar graphs. </p>
+            </div>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+              <div class="icon"><i class="fas fa-person-booth"></i></div>
+              <h4 class="title" style="color:#28c997">No need to go for polling booth</h4>
+              <p class="description">Whole system is online and you need not to go anywhere.</p>
+            </div>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+              <div class="icon"><i class="fab fa-python"></i></div>
+              <h4 class="title" style="color:#28c997">Python Code</h4>
+              <p class="description"> The strong and secure python code makes it less vulnerable. </p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight"></div>
+        </div>
+
+
+    </section>
+
+    <!--==========================
+      Team Section
+    ============================-->
+    <section id="team">
+      <div class="container wow fadeInUp">
+        <div class="section-header">
+          <h3 class="section-title">Team</h3>
+          <p class="section-description"> These are the team members for this project.</p>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="member">
+              <div class="pic"><img src="{% static 'aashu2.jpeg'%}" alt=""></div>
+              <h4>Ashutosh Saraf</h4>
+              <span>Team member-1</span>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member">
+              <div class="pic"><img src="{% static 'anshumann.jpg'%}" alt=""></div>
+              <h4>Anshuman Kumar</h4>
+              <span>Team member-2</span>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member">
+              <div class="pic"><img src="{% static 'aayush_harsh.jpg'%}" alt=""></div>
+              <h4>Ayush Harsh</h4>
+              <span>Team Member-3</span>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member">
+              <div class="pic"><img src="{% static 'aditya.jpeg'%}" alt=""></div>
+              <h4>Aditya Ranjan</h4>
+              <span>Team Member-4</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- #team -->
+
+    <!--==========================
+      Contact Section
+    ============================-->
+    <section id="contact">
+      <div class="container wow fadeInUp">
+        <div class="section-header">
+          <h3 class="section-title">Register</h3>
+          <p class="section-description">Your vote is more powerful than you think!</p>
+        </div>
+      </div>
+
+      <!-- Uncomment below if you wan to use dynamic maps -->
+
+      <div class=" row text-center" >
+
+          <div class="col-lg-4 col-sm-4" style="margin: 0 auto;">
+            <div class="form">
+              <form action="" method="post" role="form" id="form" class="contactForm">{% csrf_token %}
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control reset" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" autocomplete="off" />
+                  <div class="validation"></div>
+                </div>
+
+                <div class="form-group">
+                  <input type="password" class="form-control reset" name="password" id="password" placeholder="Enter password" data-rule="minlen:8" data-msg="Please enter 10 numbers for a phone number" autocomplete="off" />
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control reset" name="con-password" id="con-password" placeholder="Retype your password" data-rule="minlen:8" data-msg="Please enter at least 8 chars of pssword" autocomplete="off" />
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <input type="number" class="form-control reset" name="number" id="number" placeholder="Enter your number" data-rule="minlen:10" data-msg="Please enter at least 8 chars of pssword" autocomplete="off" />
+                  <div class="validation"></div>
+                </div>
+
+
+                <div class="text-center"><button type="submit">Register as a voter</button></div>
+              </form>
+            </div>
+          </div>
+      </div>
+
+
+
+    </section><!-- #contact -->
+
+  </main>
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="text-center">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+      <div class="copyright">
+        &copy; Copyright <strong>Firevote</strong>. All Rights Reserved
+      </div>
+
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'jquery.min.js'%}"></script>
+  <script src="{% static 'jquery-migrate.min.js'%}"></script>
+  <script src="{% static 'bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'easing.min.js'%}"></script>
+  <script src="{% static 'wow.min.js'%}"></script>
+  <script src="{% static 'waypoints.min.js'%}"></script>
+  <script src="{% static 'counterup.min.js'%}"></script>
+  <script src="{% static 'hoverIntent.js'%}"></script>
+  <script src="{% static 'superfish.min.js'%}"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'main.js'%}"></script>
+  <script>
+$(document).ready(function () {
+
+    $("#form").submit( function() {
+
+       $name= $('#name').val()
+      $pass= $('#password').val()
+      $num = $('#number').val()
+      $cpass= $('#con-password').val()
+
+      if ($pass != $cpass ){
+      alert("password and confirm password field doesn't match")
+      return false
+      }
+
+
+      else{
+        $.ajax({
+            url: 'save/',
+           // type: "POST",
+            //This is the dictionary you are SENDING to your Django code.
+            // We are sending the 'action':add_car and the 'id: $car_id
+            // which is a variable that contains what car the user selected
+           data: { 'name' : $name, 'pass' : $pass, 'num' : $num},
+            dataType: 'json',
+            success: function(data){
+            if (data.bool){
+            alert('Registered Successfully! \n your secret code is:  '+ data.code);
+            }
+            else{
+             alert('A voter with that number already exists!');
+             }
+            }
+        });
+        }
+        $('.reset').val('');
+    });
+    });
+</script>
+</body>
+</html>

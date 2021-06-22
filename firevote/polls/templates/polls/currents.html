@@ -1,0 +1,164 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+{% if request.session.voter_name %}
+
+
+ <header>
+    <nav class="navbar navbar-expand-lg navbar-light " id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/">FIREVOTE</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="">Current polls</a>
+            </li>
+
+              <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/login/voterlog/logout/">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+</header>
+<div class="container text-center">
+  <h1>Current Polls!</h1>
+    <span id="me" title="{{request.session.voter_name }}"
+    <hr>
+  <p>This is some text.</p>
+    <div class="col-lg-6 " style=" margin: 0 auto;">
+
+
+         <div class="row ">
+        Choose Position:
+            <div class="form-group" style="margin: 0 auto; position: relative;">
+                <select class="form-control" name="position" id="position" tabindex="1">
+
+                    <option disabled selected value> -- Select From Position -- </option>
+                    {% for i in data %}
+                    <option>{{i}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+         </div>
+
+    </div>
+ <hr>
+
+
+    <div class="alert alert-warning" id="hideme">
+        <strong>Warning!</strong> You can cast your vote only one time per position, and it cannot be undone. So, be wise in your choice!
+    </div>
+
+    <h2>Available candidates for this position</h2>
+
+    <table width="270" align="center">
+
+        <form >
+            <thead>
+               <th>Candidates</th>
+                <th></th>
+            </thead>
+            <tbody id="here">
+            </tbody>
+        </form>
+    </table>
+
+</div>
+<script>
+    $(document).ready(function () {
+    $('#hideme').hide();
+
+    $("#position").on("change", function() {
+
+        $pos = $("#position").val()
+        $.ajax({
+            url: 'show/',
+            //type: "POST",
+            // This is the dictionary you are SENDING to your Django code.
+            // We are sending the 'action':add_car and the 'id: $car_id
+            // which is a variable that contains what car the user selected
+            data: {'position' : $pos},
+            dataType: 'json',
+            success: function(data){
+            var k = '';
+
+           if( data.values.length>0){
+            for(var i = 0;i < (data.values.length) ; i=i+1){
+            k+= '<tr>';
+            k+= '<td>';
+            k+= data.values[i];
+            k+= '</td>'
+            k+= '<td>'
+            k+= "<input type='radio' class='select' onchange='getVote(this.value)' name='candidate' value='"+ data.values[i] +"'>";
+            k+= '</td></tr>';
+
+            }
+       document.getElementById('here').innerHTML = k;
+        $('#hideme').show();
+            }
+
+            else{
+            k+= '<p>None Available</p>'
+            document.getElementById('here').innerHTML = k;
+            }
+            }
+
+        });
+    });
+
+
+
+    });
+
+
+    $('.select').on('change',function(){
+        console.log($(this).val());
+        confirm('your vote is for '+ $(this).val());
+    })
+
+    function getVote(val){
+    if(confirm('your vote is for '+ val)){
+    $name = $('#me').attr('title')
+    $pos = $("#position").val()
+    $.ajax({
+
+            url: 'vote/',
+            //type: "POST",
+            // This is the dictionary you are SENDING to your Django code.
+            // We are sending the 'action':add_car and the 'id: $car_id
+            // which is a variable that contains what car the user selected
+            data: {'candidate' : val, 'name' : $name, 'position' : $pos},
+            dataType: 'json',
+            success: function(data){
+            if(data.Bool == 1)
+                alert('you have successfully voted for '+ data.name);
+
+            else if (data.Bool == 2)
+                alert("You don't have permission to vote! please contact the administrator.");
+            else
+                alert("you can't vote for same position twice");
+
+            }
+            })
+    }
+    else{
+    alert('No worries! you can choose another.');
+    }
+    }
+
+
+
+</script>
+{% else %}
+<h1>Please login to access this page!</h1>
+<a href="/login/">login here</a>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+{% if request.session.admin_name %}
+
+
+ <header>
+    <nav class="navbar navbar-expand-lg navbar-light " id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/">FIREVOTE</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/login/adminlog/positions/">Manage Positions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/login/adminlog/candidates/">Manage Candidates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/login/adminlog/image/">Poll Results</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/login/adminlog/logout/">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+</header>
+
+<div class="container text-center">
+    <h1>Hello User You have Logged In As Admin!</h1>
+    <h2>-: These are the stuffs you can do :-</h2>
+    <h3>(click on each to know more)</h3>
+    <br>
+    <h3 class="toclick"><b>Manage Positions</b></h3>
+    <p class="tohide">Click on this tab in the nav bar above to Add/ Remove positions to vote for</p>
+    <h3 class="toclick"><b>Manage Candidates</b></h3>
+    <p class="tohide">Click on this tab in the nav bar above to Add/ Remove candidate Appearing for voting</p>
+     <h3 class="toclick"><b>Poll Results</b></h3>
+    <p class="tohide">Display poll results!</p>
+</div>
+
+<script>
+     $(document).ready(function () {
+     $('.tohide').hide();
+     })
+    $('.toclick').click(function(){
+    $('.tohide').show('slow');
+
+    })
+
+</script>
+</body>
+{% else %}
+<h1>please login to Access this page</h1>
+{% endif %}
+</html>
+
+{% endblock %}

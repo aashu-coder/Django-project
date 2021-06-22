@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+{% if request.session.admin_name%}
+
+<script>location.href='/login/adminlog'</script>
+
+{% elif request.session.voter_name %}
+<script>location.href='/login/voterlog'</script>
+{% else %}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+  <link rel="stylesheet" type='text/css' href="{% static 'index.css' %}">
+<title>Login-Devfinder</title>
+
+
+</head>
+<body>
+
+
+<div class="container" >
+    <a href="/" class="btn btn-info" role="button"><i class="fas fa-home"></i> Home</a>
+
+    	<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel panel-login">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="#" class="active" id="login-form-link">Login as Admin</a>
+							</div>
+							<div class="col-xs-6">
+								<a href="#" id="register-form-link">Login as Voter</a>
+							</div>
+						</div>
+						<hr>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<form id="login-form" action="adminlog/" method="post" role="form" style="display: block;">{% csrf_token %}
+									<div class="form-group">
+
+									   <input type='text' name='ausername' id="ausername" class='form-control' tabindex='1' placeholder='Username'  required>
+									</div>
+									<div class="form-group">
+										<input type="password" name="apassword" id="apassword" class="form-control" tabindex="2" placeholder="Password" required>
+									</div>
+
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+											</div>
+										</div>
+									</div>
+								</form>
+								<form id="register-form" action="voterlog/" method="post" role="form" style="display: none;">{% csrf_token %}
+
+									<div class="form-group">
+										<input type="text" name="vusername" id="vusername" class=" form-control" tabindex="1" placeholder="Voter Id" value="" required>
+									</div>
+									<div class="form-group">
+										<input type="password" name="vpassword" id="vpassword" class="form-control" tabindex="2" placeholder="Password" required>
+									</div>
+									<div class="form-group">
+										<input type="button" class="btn btn-info" value="Click to get OTP" onclick="savenshow()">
+									</div>
+									<div id="hide">
+									<span id="warning" style="color:red"> Now Enter the OTP sent  to Your mobile number</span>
+									<div class="form-group" >
+										<input type="text" placeholder="Enter the OTP here" name="OTP" id="OTP" required>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Log in">
+											</div>
+										</div>
+									</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+
+
+	function savenshow(){
+	$('#hide').show()
+	$id = $('#vusername').val()
+	$pass = $('#vpassword').val()
+	$.ajax({
+            url: 'otp/',
+            //type: "POST",
+            // This is the dictionary you are SENDING to your Django code.
+            // We are sending the 'action':add_car and the 'id: $car_id
+            // which is a variable that contains what car the user selected
+            data: {'id' : $id, 'pass' : $pass},
+            dataType: 'json',
+            success: function(data){
+            if (data.Bool==0)
+            alert('The username or password you entered is incorrect')
+            }
+	})
+	}
+
+
+	$(document).ready(function () {
+
+	$("#hide").hide()
+
+
+	})
+
+
+
+
+
+	    $(function() {
+
+
+
+    $('#login-form-link').click(function(e) {
+		$("#login-form").delay(100).fadeIn(100);
+ 		$("#register-form").fadeOut(100);
+		$('#register-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+	$('#register-form-link').click(function(e) {
+		$("#register-form").delay(100).fadeIn(100);
+ 		$("#login-form").fadeOut(100);
+		$('#login-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+
+
+
+
+});
+
+	</script>
+
+</body>
+{% endif %}
