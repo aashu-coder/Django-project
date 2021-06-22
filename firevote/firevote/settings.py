@@ -1,3 +1,6 @@
+
+#check comment added
+
 """
 Django settings for firevote project.
 
